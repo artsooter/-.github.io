@@ -113,25 +113,39 @@
     </tr>
     </tbody>
 </table>
+<div style="margin-top: 100px">
+    <label>新的「更新内容」:</label>
+    <input style="width: 450px" id="input"/>
+</div>
 <script>
-    // &publishTime=
+    const publishContent = new URLSearchParams(location.search).get('publishContent')
     // &publishName=123&publishContent=content&publishTag=tag&publishGit=git
-    const searchParams = new URLSearchParams(location.search);
-    const arr = ['publishName','publishTime', 'publishContent', 'publishTag', 'publishGit']
+    const init=()=>{
+        const searchParams = new URLSearchParams(location.search);
+        const arr = ['publishName','publishTime', 'publishContent', 'publishTag', 'publishGit']
 
-    arr.forEach(key=>{
-        let value
-        if(key==='publishTime'){
-            const da = new Date()
-            const month = da.getMonth()+1+'月';
-            const date = da.getDate()+'日';
-            value = [month,date].join('-')
-        }else{
-            value =searchParams.get(key)
-        }
-        document.getElementsByClassName(key)[0].innerHTML=value
-        document.getElementsByClassName(key)[1].innerHTML=value
-    })
+        arr.forEach(key=>{
+            let value
+            if(key==='publishTime'){
+                const da = new Date()
+                const month = da.getMonth()+1+'月';
+                const date = da.getDate()+'日';
+                value = [month,date].join('-')
+            }else{
+                value =searchParams.get(key)
+            }
+            document.getElementsByClassName(key)[0].innerHTML=value
+            document.getElementsByClassName(key)[1].innerHTML=value
+        })
+    }
+    init()
+
+    document.getElementById('input').onchange=function (e){
+        const value= e.target.value
+        const searchParams = new URLSearchParams(location.search);
+        searchParams.set('publishContent',value)
+        location.search=searchParams.toString()
+    }
 </script>
 </body>
 </html>
