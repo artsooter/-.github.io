@@ -150,6 +150,7 @@ flex-direction:column;;
 
 .t2_1{
   font-family: Levenim MT;
+  font-weight: 600;
   font-size: 35px ;
   position: absolute;
   width: auto;
@@ -161,7 +162,6 @@ flex-direction:column;;
   right: 0;
   border:0px solid red;
   color: black;
-  opacity:  75%;
 }
 
 
