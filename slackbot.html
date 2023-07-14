@@ -14,7 +14,10 @@
         <tbody>
         <tr style="height: 21px;">
             <td style="font-family: &quot;Google Sans&quot;, Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom; background-color: rgb(255, 242, 204);"></td>
-            <td style="margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom; background-color: rgb(255, 242, 204); font-weight: bold; color: rgb(192, 0, 0); text-align: center;">预发环境</td>
+            <td style="margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom; background-color: rgb(255, 242, 204); font-weight: bold; color: rgb(192, 0, 0); text-align: center;">
+                <span class="publishType"></span>
+                预发环境
+            </td>
         </tr>
         <tr style="height: 21px;">
             <td style="margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom;">项目名称</td>
@@ -71,7 +74,10 @@
         <tbody>
         <tr style="height: 21px;">
             <td style="font-family: &quot;Google Sans&quot;, Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom; background-color: rgb(255, 242, 204);"></td>
-            <td style="margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom; background-color: rgb(255, 242, 204); font-weight: bold; color: rgb(192, 0, 0); text-align: center;">生产环境</td>
+            <td style="margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom; background-color: rgb(255, 242, 204); font-weight: bold; color: rgb(192, 0, 0); text-align: center;">
+                <span class="publishType"></span>
+                生产环境
+            </td>
         </tr>
         <tr style="height: 21px;">
             <td style="margin: 0px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: bottom;">项目名称</td>
@@ -162,6 +168,12 @@
             document.getElementsByClassName(key)[0].innerHTML=value
             document.getElementsByClassName(key)[1].innerHTML=value
         })
+
+        if(searchParams.get('publishGit')){
+			const publishType = (searchParams.get('publishGit').includes('/loan-front')||searchParams.get('publishGit').includes('/loan/operation'))?'前端':'后端'
+			document.getElementsByClassName('publishType')[0].innerHTML=publishType
+			document.getElementsByClassName('publishType')[1].innerHTML=publishType
+        }
     }
     init()
 
